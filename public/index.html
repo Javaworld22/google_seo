@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Handcrafted bread baked daily in Surulere, Lagos.
+    Order online or visit our bakery for freshly baked bread, pastries, and cakes.">
+    <meta name="keywords" content="Bakery, Fresh bread, Pastries, Cakes">
+    <link rel="canonical" href="https://www.freshmart.com.ng/">
+
+    <script type="application/json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "Freshmart Bakery",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Main Street",
+                "addressLocality": "Surulere",
+                "addressRegion": "Lagos",
+                "postalCode": "101283",
+                "addressCountry": "NG"
+            },
+            "telephone": "+234 801 234 5678",
+            "url": "https://www.freshmart.com.ng/"
+        }
+    </script>
+
+    <title>Freshmart Bakery — Fresh Bread & Pastries in Surulere, Lagos</title>
+</head>
+<body>
+
+    <h1>Freshmart Bakery — Fresh Bread Baked Daily in Surulere, Lagos</h1>
+    <img src="logo.jpg" width="200" height="200" alt="Freshmart Bakery logo" loading="lazy">
+
+    <form action="/subscribe" method="POST">
+        <!-- Text input -->
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Adeyemi" required>
+
+        <!-- Email input -->
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="john@gmail.com" required>
+
+        <!-- Phone number -->
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+234 801 234 5678">
+
+        <!-- Dropdown -->
+        <select name="interest">
+            <option value="">What are you interested in?</option>
+            <option value="web">Web Design</option>
+            <option value="seo">SEO Services</option>
+            <option value="ads">Google Ads</option>
+        </select>
+
+        <!-- Checkbox -->
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I agree to receive marketing emails</label>
+
+        <!-- Submit button -->
+        <button type="submit">Get My Free Quote</button>
+    </form>
+
+</body>
+</html>
