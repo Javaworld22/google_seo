@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anambra State Association of Southern California</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1512;
+    --wine:#7A1730;
+    --wine-deep:#4E0E20;
+    --gold:#C9A227;
+    --gold-soft:#E4C868;
+    --bone:#EFE7D8;
+    --bone-dim:#E2D8C4;
+    --forest:#26402F;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--wine);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- KOLA MOTIF ---------- */
+  .kola{width:34px;height:34px;flex-shrink:0;}
+  .kola path{fill:currentColor;}
+  .divider{
+    display:flex;align-items:center;gap:16px;
+    color:var(--gold);
+    margin:0 0 28px 0;
+  }
+  .divider .line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 0%,transparent 100%);}
+  .divider .kola{color:var(--wine);}
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(26,21,18,0.94);
+    backdrop-filter:blur(6px);
+    color:var(--bone);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:18px;
+    text-decoration:none;color:var(--bone);
+  }
+  .brand .kola{color:var(--gold);}
+  .brand small{
+    display:block;font-family:'IBM Plex Mono',monospace;
+    font-size:10px;letter-spacing:0.1em;color:var(--gold-soft);
+    text-transform:uppercase;font-weight:400;
+  }
+  nav ul{
+    list-style:none;display:flex;gap:28px;margin:0;padding:0;
+    font-size:14px;font-weight:500;
+  }
+  nav ul a{text-decoration:none;opacity:0.85;transition:opacity .2s;}
+  nav ul a:hover{opacity:1;color:var(--gold-soft);}
+  .nav-cta{
+    background:var(--wine);color:var(--bone);
+    padding:9px 18px;border-radius:2px;
+    font-size:13px;font-weight:600;text-decoration:none;
+    border:1px solid var(--gold);
+  }
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  @media(max-width:820px){
+    nav ul{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    color:var(--bone);
+    position:relative;
+    overflow:hidden;
+    min-height:640px;
+    display:flex;
+    align-items:center;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    opacity:0;transition:opacity 900ms ease;
+    background:var(--ink);
+  }
+  .hero-bg.is-active{opacity:1;}
+  .hero-bg.bg-0{background:
+      radial-gradient(ellipse at 20% 0%, rgba(122,23,48,0.55), transparent 55%),
+      radial-gradient(ellipse at 85% 100%, rgba(38,64,47,0.5), transparent 55%),
+      var(--ink);}
+  .hero-bg.bg-1{background:
+      radial-gradient(ellipse at 80% 10%, rgba(201,162,39,0.35), transparent 55%),
+      radial-gradient(ellipse at 10% 90%, rgba(122,23,48,0.5), transparent 55%),
+      var(--ink);}
+  .hero-bg.bg-2{background:
+      radial-gradient(ellipse at 15% 85%, rgba(38,64,47,0.55), transparent 55%),
+      radial-gradient(ellipse at 90% 15%, rgba(122,23,48,0.45), transparent 55%),
+      var(--ink);}
+  .hero-bg.bg-3{background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,162,39,0.3), transparent 60%),
+      radial-gradient(ellipse at 15% 100%, rgba(122,23,48,0.55), transparent 55%),
+      var(--ink);}
+
+  .hero-track{position:relative;width:100%;padding:110px 0 90px;}
+  .hero-slide{
+    display:none;
+  }
+  .hero-slide.is-active{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;gap:60px;align-items:center;
+    animation:heroIn 700ms ease both;
+  }
+  @keyframes heroIn{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero h1{
+    font-size:clamp(38px,5.4vw,66px);
+    line-height:1.04;
+    color:var(--bone);
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--gold-soft);
+  }
+  .hero p.lead{
+    font-size:18px;max-width:46ch;color:var(--bone-dim);
+    margin:22px 0 34px;
+  }
+  .hero .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:14px 26px;
+    font-weight:600;font-size:14px;text-decoration:none;
+    border-radius:2px;letter-spacing:0.01em;
+  }
+  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-ghost{border:1px solid rgba(239,231,216,0.4);color:var(--bone);}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-ghost:hover{border-color:var(--gold);}
+
+  .hero-mark{
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-mark svg{width:100%;max-width:320px;color:var(--gold);opacity:0.9;}
+
+  /* ---------- HERO CAROUSEL CONTROLS ---------- */
+  .hero-controls{
+    position:absolute;left:0;right:0;bottom:28px;z-index:5;
+  }
+  .hero-controls .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .hero-dots{display:flex;gap:10px;}
+  .hero-dot{
+    width:28px;height:3px;border:none;padding:0;cursor:pointer;
+    background:rgba(239,231,216,0.3);
+    transition:background 200ms ease;
+  }
+  .hero-dot.is-active{background:var(--gold);}
+  .hero-arrows{display:flex;gap:10px;}
+  .hero-arrow{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(239,231,216,0.35);
+    background:transparent;color:var(--bone);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:border-color 200ms ease, background 200ms ease;
+  }
+  .hero-arrow:hover{border-color:var(--gold);background:rgba(201,162,39,0.12);}
+  .hero-arrow svg{width:16px;height:16px;}
+  @media(max-width:600px){
+    .hero-controls .wrap{flex-direction:column;gap:16px;align-items:flex-start;}
+  }
+  @media(max-width:820px){
+    .hero-slide.is-active{grid-template-columns:1fr;text-align:left;}
+    .hero-mark{display:none;}
+    .hero{min-height:auto;}
+  }
+
+  .stat-strip{
+    background:var(--wine-deep);color:var(--bone);
+  }
+  .stat-strip .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    padding:26px 32px;gap:20px;
+  }
+  .stat-strip .stat b{
+    font-family:'Fraunces',serif;font-size:26px;display:block;color:var(--gold-soft);
+  }
+  .stat-strip .stat span{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;
+    letter-spacing:0.08em;text-transform:uppercase;opacity:0.75;
+  }
+  @media(max-width:820px){
+    .stat-strip .wrap{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);margin-top:10px;}
+  .section-head p{color:#4a423a;font-size:16.5px;margin-top:16px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bone);}
+  .about-grid{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;
+  }
+  .about-card{
+    background:var(--ink);color:var(--bone);
+    padding:36px;border-radius:2px;
+    border-top:3px solid var(--gold);
+  }
+  .about-card .yr{font-family:'Fraunces',serif;font-size:52px;color:var(--gold-soft);line-height:1;}
+  .about-card p{color:var(--bone-dim);margin-top:14px;font-size:15px;}
+  .about-body p{margin:0 0 18px;color:#3a332c;}
+  .about-body p:last-child{margin-bottom:0;}
+  @media(max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars{background:#E7DEC9;}
+  .pillar-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+    background:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .pillar{
+    background:var(--bone);padding:34px 28px;min-height:230px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .pillar .num{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--wine);
+  }
+  .pillar h3{font-size:19px;}
+  .pillar p{font-size:14.5px;color:#4a423a;margin:0;}
+  @media(max-width:960px){
+    .pillar-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:560px){
+    .pillar-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- NEWS ---------- */
+  .news{background:var(--bone);}
+  .news-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  .news-card{
+    border:1px solid #d8cdb4;background:#fff;
+  }
+  .news-thumb{
+    height:170px;
+    background:linear-gradient(135deg,var(--wine),var(--wine-deep));
+    position:relative;
+  }
+  .news-thumb .kola{
+    position:absolute;bottom:16px;right:16px;color:rgba(239,231,216,0.35);width:44px;height:44px;
+  }
+  .news-body{padding:22px;}
+  .news-body .eyebrow{margin-bottom:8px;}
+  .news-body h3{font-size:18px;line-height:1.3;margin-bottom:10px;}
+  .news-body p{font-size:14px;color:#5a5248;margin:0 0 14px;}
+  .news-body a{font-size:13px;font-weight:600;color:var(--wine);text-decoration:none;}
+  .news-note{
+    margin-top:20px;font-size:13px;color:#8a7f6c;font-style:italic;
+  }
+  @media(max-width:900px){
+    .news-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CTA / JOIN ---------- */
+  .join{
+    background:var(--forest);color:var(--bone);
+    text-align:center;
+  }
+  .join h2{font-size:clamp(28px,3.6vw,42px);color:var(--bone);}
+  .join p{max-width:56ch;margin:18px auto 32px;color:#cfd9d1;}
+  .join .cta-row{justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--bone-dim);padding:64px 0 28px;}
+  .foot-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:44px;border-bottom:1px solid rgba(239,231,216,0.12);
+  }
+  .foot-brand{display:flex;gap:10px;align-items:center;margin-bottom:14px;}
+  .foot-brand .kola{color:var(--gold);}
+  .foot-brand span{font-family:'Fraunces',serif;font-size:18px;color:var(--bone);}
+  footer h4{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-soft);
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none;margin:0;padding:0;font-size:14px;}
+  footer li{margin-bottom:10px;}
+  footer a{text-decoration:none;color:var(--bone-dim);}
+  footer a:hover{color:var(--gold-soft);}
+  .foot-bottom{
+    padding-top:24px;display:flex;justify-content:space-between;
+    font-size:12.5px;color:#8b8175;flex-wrap:wrap;gap:10px;
+  }
+  @media(max-width:820px){
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <svg class="kola" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z"/>
+      </svg>
+      <span>Anambra State Association<br><small>of Southern California &middot; Est. 1993</small></span>
+    </a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pillars">What We Do</a></li>
+        <li><a href="#news">Community</a></li>
+        <li><a href="#join">Membership</a></li>
+      </ul>
+      <a class="nav-cta" href="#join">Join ASA-SC</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg bg-0 is-active" data-bg="0"></div>
+  <div class="hero-bg bg-1" data-bg="1"></div>
+  <div class="hero-bg bg-2" data-bg="2"></div>
+  <div class="hero-bg bg-3" data-bg="3"></div>
+
+  <div class="hero-track">
+    <div class="wrap">
+
+      <div class="hero-slide is-active" data-slide="0">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-soft)">Ndị Anambra n'California</p>
+          <h1>One community,<br><em>far from home,</em><br>still home.</h1>
+          <p class="lead">The Anambra State Association of Southern California brings together families from Anambra State, Nigeria, to preserve our culture, support one another, and stay connected to home &mdash; wherever life has taken us.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#join">Become a Member</a>
+            <a class="btn btn-ghost" href="#about">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20 C118 20 130 46 118 66 C140 55 166 66 166 86 C166 104 140 116 118 108 C130 128 118 154 100 154 C82 154 70 128 82 108 C60 116 34 104 34 86 C34 66 60 55 82 66 C70 46 82 20 100 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="100" cy="86" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-slide="1">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-soft)">Since April 1993</p>
+          <h1>Founded by families,<br><em>rooted</em> in Anambra.</h1>
+          <p class="lead">What began as a small circle of Anambra indigenes looking out for one another in Southern California has grown into a lasting home for the whole community.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#about">Read Our Story</a>
+            <a class="btn btn-ghost" href="#pillars">What We Do</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20 C118 20 130 46 118 66 C140 55 166 66 166 86 C166 104 140 116 118 108 C130 128 118 154 100 154 C82 154 70 128 82 108 C60 116 34 104 34 86 C34 66 60 55 82 66 C70 46 82 20 100 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="100" cy="86" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-slide="2">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-soft)">Igwebuike</p>
+          <h1>Strength <em>in unity,</em><br>culture we carry.</h1>
+          <p class="lead">From language and dress to music and celebration, we keep Igbo tradition alive for our members and the generation coming up behind us.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#news">Upcoming Gatherings</a>
+            <a class="btn btn-ghost" href="#pillars">Our Programs</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20 C118 20 130 46 118 66 C140 55 166 66 166 86 C166 104 140 116 118 108 C130 128 118 154 100 154 C82 154 70 128 82 108 C60 116 34 104 34 86 C34 66 60 55 82 66 C70 46 82 20 100 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="100" cy="86" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-slide="3">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-soft)">Nnọọ &mdash; You're Welcome</p>
+          <h1>Be part of<br><em>the next chapter.</em></h1>
+          <p class="lead">Whether you're newly arrived or have called Southern California home for decades, there's a place for you and your family in ASA-SC.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#join">Become a Member</a>
+            <a class="btn btn-ghost" href="#join">Contact Us</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20 C118 20 130 46 118 66 C140 55 166 66 166 86 C166 104 140 116 118 108 C130 128 118 154 100 154 C82 154 70 128 82 108 C60 116 34 104 34 86 C34 66 60 55 82 66 C70 46 82 20 100 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="100" cy="86" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero-controls">
+    <div class="wrap">
+      <div class="hero-dots" role="tablist" aria-label="Hero slides">
+        <button class="hero-dot is-active" data-goto="0" aria-label="Slide 1"></button>
+        <button class="hero-dot" data-goto="1" aria-label="Slide 2"></button>
+        <button class="hero-dot" data-goto="2" aria-label="Slide 3"></button>
+        <button class="hero-dot" data-goto="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="hero-arrows">
+        <button class="hero-arrow" id="heroPrev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="hero-arrow" id="heroNext" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('.hero-slide');
+  var bgs = document.querySelectorAll('.hero-bg');
+  var dots = document.querySelectorAll('.hero-dot');
+  var current = 0;
+  var total = slides.length;
+  var timer;
+
+  function goTo(index){
+    current = (index + total) % total;
+    slides.forEach(function(s,i){ s.classList.toggle('is-active', i === current); });
+    bgs.forEach(function(b,i){ b.classList.toggle('is-active', i === current); });
+    dots.forEach(function(d,i){ d.classList.toggle('is-active', i === current); });
+  }
+
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  function startAutoplay(){
+    timer = setInterval(next, 6000);
+  }
+  function stopAutoplay(){
+    clearInterval(timer);
+  }
+  function restartAutoplay(){
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  document.getElementById('heroNext').addEventListener('click', function(){ next(); restartAutoplay(); });
+  document.getElementById('heroPrev').addEventListener('click', function(){ prev(); restartAutoplay(); });
+  dots.forEach(function(dot){
+    dot.addEventListener('click', function(){
+      goTo(parseInt(dot.getAttribute('data-goto'), 10));
+      restartAutoplay();
+    });
+  });
+
+  var heroEl = document.querySelector('.hero');
+  heroEl.addEventListener('mouseenter', stopAutoplay);
+  heroEl.addEventListener('mouseleave', startAutoplay);
+
+  startAutoplay();
+})();
+</script>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="stat"><b>1993</b><span>Year Founded</span></div>
+    <div class="stat"><b>4</b><span>Core Programs</span></div>
+    <div class="stat"><b>2</b><span>Nations, One Family</span></div>
+    <div class="stat"><b>&infin;</b><span>Igwebuike &mdash; Strength in Unity</span></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Who We Are</p>
+      <h2>Founded on mutual support, built to last.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="yr">'93</div>
+        <p>Formed in April 1993 by Anambra indigenes settling in Southern California, the association began as a small circle of families looking out for one another and has grown into a lasting home for the community.</p>
+      </div>
+      <div class="about-body">
+        <p>The Anambra State Association of Southern California (ASA-SC) exists to give members social and cultural support as they build their lives here, while keeping them rooted in where they come from.</p>
+        <p>We also serve as a bridge &mdash; connecting our members to the government and people of Anambra State, to the wider Nigerian community across the diaspora, and to each other, through regular gatherings, mutual aid, and shared celebration.</p>
+        <p>Whether you're newly arrived or have called Southern California home for decades, ASA-SC is a place to find community, lend a hand, and pass our traditions on to the next generation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What We Do</p>
+      <h2>Four pillars hold the association together.</h2>
+    </div>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar">
+      <span class="num">01</span>
+      <h3>Cultural Preservation</h3>
+      <p>Keeping Igbo language, dress, music, and tradition alive for members and their children through gatherings and cultural events.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">02</span>
+      <h3>Community Welfare</h3>
+      <p>Standing with members through weddings, births, illness, and loss &mdash; the mutual support that has anchored the association since 1993.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">03</span>
+      <h3>Youth &amp; Education</h3>
+      <p>Mentorship and support that helps the next generation succeed academically while staying connected to their heritage.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">04</span>
+      <h3>Home Connection</h3>
+      <p>Serving as a link between our members and the government and people of Anambra State, and supporting development back home.</p>
+    </div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Community</p>
+      <h2>Gatherings &amp; news.</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-thumb">
+          <svg class="kola" viewBox="0 0 100 100"><path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z" fill="currentColor"/></svg>
+        </div>
+        <div class="news-body">
+          <p class="eyebrow">Annual Gathering</p>
+          <h3>Anambra Day Cultural Gala</h3>
+          <p>Our biggest gathering of the year &mdash; an evening of traditional attire, music, food, and fellowship for the whole family.</p>
+          <a href="#">Details &amp; RSVP &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb">
+          <svg class="kola" viewBox="0 0 100 100"><path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z" fill="currentColor"/></svg>
+        </div>
+        <div class="news-body">
+          <p class="eyebrow">Quarterly Meeting</p>
+          <h3>General Membership Town Hall</h3>
+          <p>Members meet to review association business, welfare updates, and plans for upcoming community projects.</p>
+          <a href="#">Meeting Info &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb">
+          <svg class="kola" viewBox="0 0 100 100"><path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z" fill="currentColor"/></svg>
+        </div>
+        <div class="news-body">
+          <p class="eyebrow">Giving Back</p>
+          <h3>Scholarship &amp; Youth Fund Drive</h3>
+          <p>Supporting the education of our members' children with an annual fundraiser for the ASA-SC scholarship fund.</p>
+          <a href="#">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <p class="news-note">Sample listings &mdash; replace with your association's real upcoming events and dates.</p>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--gold-soft)">Nnọọ &mdash; You're Welcome Here</p>
+    <h2>Join the association.</h2>
+    <p>Membership connects you with a community that shows up &mdash; for celebrations, for hard times, and for everything in between. Reach out to get started.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Membership Form</a>
+      <a class="btn btn-ghost" href="#">Contact the Executives</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="kola" viewBox="0 0 100 100"><path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z" fill="currentColor"/></svg>
+          <span>Anambra State Association<br>of Southern California</span>
+        </div>
+        <p style="font-size:14px;max-width:34ch;">Serving Anambra families across Southern California since 1993.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pillars">What We Do</a></li>
+          <li><a href="#news">Community</a></li>
+          <li><a href="#join">Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Los Angeles, California</li>
+          <li><a href="#">info@asa-sc.org</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Anambra State Association of Southern California. All rights reserved.</span>
+      <span>Igwebuike &mdash; Strength in Unity</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
