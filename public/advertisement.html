@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advertisment &mdash; Anambra State Association of Southern California</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1512; --wine:#7A1730; --wine-deep:#4E0E20;
+    --gold:#C9A227; --gold-soft:#E4C868;
+    --bone:#EFE7D8; --bone-dim:#E2D8C4; --forest:#26402F;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bone);color:var(--ink);font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces',serif;margin:0;font-weight:600;letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--wine);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  .kola{width:34px;height:34px;flex-shrink:0;}
+  .kola path{fill:currentColor;}
+
+  /* NAV */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(26,21,18,0.94);backdrop-filter:blur(6px);color:var(--bone);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;font-size:18px;text-decoration:none;color:var(--bone);}
+  .brand .kola{color:var(--gold);}
+  .brand small{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gold-soft);text-transform:uppercase;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14px;font-weight:500;}
+  nav ul a{text-decoration:none;opacity:0.85;transition:opacity .2s;}
+  nav ul a:hover{opacity:1;color:var(--gold-soft);}
+  .nav-item{position:relative;}
+  .nav-item.has-dropdown > a{display:inline-flex;align-items:center;gap:5px;}
+  .nav-caret{width:9px;height:9px;transition:transform 200ms ease;flex-shrink:0;}
+  .nav-item.has-dropdown:hover .nav-caret,.nav-item.has-dropdown:focus-within .nav-caret{transform:rotate(180deg);}
+  .dropdown{position:absolute;top:100%;left:0;margin-top:16px;min-width:200px;background:var(--ink);border:1px solid rgba(239,231,216,0.14);border-top:2px solid var(--gold);box-shadow:0 18px 40px rgba(0,0,0,0.35);padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 180ms ease, transform 180ms ease, visibility 180ms;z-index:60;}
+  .nav-item.has-dropdown:hover .dropdown,.nav-item.has-dropdown:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  .dropdown li{margin:0;}
+  .dropdown a{display:block;padding:10px 14px;font-size:13.5px;border-radius:2px;color:var(--bone-dim);opacity:1;}
+  .dropdown a:hover{background:rgba(201,162,39,0.12);color:var(--gold-soft);}
+  .nav-cta{background:var(--wine);color:var(--bone);padding:9px 18px;border-radius:2px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--gold);}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  @media(max-width:820px){nav ul{display:none;}}
+
+  /* PAGE HEADER */
+  .page-header{background:var(--ink);color:var(--bone);padding:72px 0 56px;}
+  .page-header .eyebrow{color:var(--gold-soft);}
+  .page-header h1{font-size:clamp(32px,4.4vw,50px);margin-top:12px;color:var(--bone);}
+  .page-header p{color:var(--bone-dim);max-width:56ch;margin-top:16px;font-size:16.5px;}
+  .breadcrumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--bone-dim);opacity:0.7;margin-bottom:6px;}
+  .breadcrumb a{text-decoration:none;color:var(--gold-soft);}
+
+  section{padding:72px 0;}
+  .btn{display:inline-block;padding:14px 26px;font-weight:600;font-size:14px;text-decoration:none;border-radius:2px;letter-spacing:0.01em;}
+  .btn-primary{background:var(--wine);color:var(--bone);}
+  .btn-primary:hover{background:var(--wine-deep);}
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--gold-soft);}
+
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,38px);margin-top:10px;}
+  .section-head p{color:#4a423a;font-size:16px;margin-top:14px;}
+
+  /* AD TIERS */
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);border:1px solid var(--ink);}
+  .tier{background:var(--bone);padding:34px 28px;display:flex;flex-direction:column;gap:14px;}
+  .tier.featured{background:var(--ink);color:var(--bone);}
+  .tier .tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--wine);}
+  .tier.featured .tier-name{color:var(--gold-soft);}
+  .tier h3{font-size:22px;}
+  .tier .price{font-family:'Fraunces',serif;font-size:30px;margin:6px 0;}
+  .tier .price span{font-family:'Work Sans',sans-serif;font-size:13px;font-weight:400;opacity:0.7;}
+  .tier ul{list-style:none;margin:8px 0 0;padding:0;font-size:14px;}
+  .tier li{padding:8px 0;border-top:1px solid rgba(0,0,0,0.08);}
+  .tier.featured li{border-top-color:rgba(239,231,216,0.14);}
+  .tier p.desc{font-size:14.5px;color:#4a423a;margin:0;}
+  .tier.featured p.desc{color:var(--bone-dim);}
+  @media(max-width:920px){.tier-grid{grid-template-columns:1fr;}}
+
+  /* WHY */
+  .why{background:#E7DEC9;}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;}
+  .why-item .num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--wine);}
+  .why-item h3{font-size:19px;margin:10px 0 8px;}
+  .why-item p{font-size:14.5px;color:#4a423a;margin:0;}
+  @media(max-width:820px){.why-grid{grid-template-columns:1fr;}}
+
+  .cta-band{background:var(--forest);color:var(--bone);text-align:center;}
+  .cta-band h2{font-size:clamp(26px,3.4vw,38px);color:var(--bone);}
+  .cta-band p{max-width:52ch;margin:16px auto 28px;color:#cfd9d1;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--bone-dim);padding:64px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(239,231,216,0.12);}
+  .foot-brand{display:flex;gap:10px;align-items:center;margin-bottom:14px;}
+  .foot-brand .kola{color:var(--gold);}
+  .foot-brand span{font-family:'Fraunces',serif;font-size:18px;color:var(--bone);}
+  footer h4{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px;}
+  footer ul{list-style:none;margin:0;padding:0;font-size:14px;}
+  footer li{margin-bottom:10px;}
+  footer a{text-decoration:none;color:var(--bone-dim);}
+  footer a:hover{color:var(--gold-soft);}
+  .foot-bottom{padding-top:24px;display:flex;justify-content:space-between;font-size:12.5px;color:#8b8175;flex-wrap:wrap;gap:10px;}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="kola" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z"/>
+      </svg>
+      <span>Anambra State Association<br><small>of Southern California &middot; Est. 1993</small></span>
+    </a>
+    <div class="nav-links">
+      <ul>
+        <li class="nav-item has-dropdown">
+          <a href="index.html#about" aria-haspopup="true">
+            About
+            <svg class="nav-caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <ul class="dropdown">
+            <li><a href="overview.html">Overview</a></li>
+            <li><a href="index.html#about">Profile</a></li>
+            <li><a href="index.html#about">Management Team</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="index.html#pillars">What We Do</a></li>
+        <li class="nav-item has-dropdown">
+          <a href="index.html#news" aria-haspopup="true">
+            Media
+            <svg class="nav-caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <ul class="dropdown">
+            <li><a href="index.html#news">Gallery</a></li>
+            <li><a href="index.html#news">Videos</a></li>
+            <li><a href="advertisement.html">Advertisment</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="index.html#news">Community</a></li>
+        <li class="nav-item"><a href="index.html#join">Membership</a></li>
+      </ul>
+      <a class="nav-cta" href="index.html#join">Join ASA-SC</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Media / Advertisment</p>
+    <p class="eyebrow">Reach the Community</p>
+    <h1>Advertise with ASA-SC</h1>
+    <p>Put your business, service, or event in front of Anambra families across Southern California &mdash; on our site, in our event programs, and at our gatherings.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Placements</p>
+      <h2>Choose how you show up.</h2>
+      <p>Rates below are starting guidance &mdash; contact us to tailor a package around your event or campaign.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier">
+        <span class="tier-name">Community Listing</span>
+        <h3>Bulletin</h3>
+        <div class="price">$50<span>/ issue</span></div>
+        <p class="desc">A listing in our community bulletin and event program, shared with members at gatherings.</p>
+        <ul>
+          <li>Business name &amp; contact</li>
+          <li>Single event program</li>
+          <li>Print &amp; digital</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <span class="tier-name">Most Popular</span>
+        <h3>Website Feature</h3>
+        <div class="price">$150<span>/ quarter</span></div>
+        <p class="desc">A featured spot on our site's Media section, seen by members and visitors year-round.</p>
+        <ul>
+          <li>Logo &amp; link on site</li>
+          <li>3-month placement</li>
+          <li>Mention in email updates</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <span class="tier-name">Event Sponsor</span>
+        <h3>Gala Sponsorship</h3>
+        <div class="price">Custom</div>
+        <p class="desc">Sponsor the Anambra Day Gala or another flagship event with signage, program ads, and a shout-out.</p>
+        <ul>
+          <li>On-site branding</li>
+          <li>Program &amp; stage mention</li>
+          <li>Tickets for your team</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why Advertise Here</p>
+      <h2>A community that shows up for its own.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="num">01</span>
+        <h3>Engaged Audience</h3>
+        <p>Members who attend gatherings regularly and support businesses within the community.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">02</span>
+        <h3>Trusted Platform</h3>
+        <p>Your business is presented alongside an organization members already know and trust.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">03</span>
+        <h3>Flexible Reach</h3>
+        <p>From a single event program to year-round site placement &mdash; scale to fit your goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--gold-soft)">Let's Talk</p>
+    <h2>Ready to reach our members?</h2>
+    <p>Send us a note with what you have in mind and we'll help you find the right placement.</p>
+    <a class="btn btn-gold" href="index.html#join">Contact Us About Advertising</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="kola" viewBox="0 0 100 100"><path d="M50 10 C58 10 63 22 58 32 C68 27 80 32 80 42 C80 50 68 55 58 52 C63 62 58 74 50 74 C42 74 37 62 42 52 C32 55 20 50 20 42 C20 32 32 27 42 32 C37 22 42 10 50 10 Z" fill="currentColor"/></svg>
+          <span>Anambra State Association<br>of Southern California</span>
+        </div>
+        <p style="font-size:14px;max-width:34ch;">Serving Anambra families across Southern California since 1993.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#pillars">What We Do</a></li>
+          <li><a href="index.html#news">Community</a></li>
+          <li><a href="index.html#join">Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Los Angeles, California</li>
+          <li><a href="#">info@asa-sc.org</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Anambra State Association of Southern California. All rights reserved.</span>
+      <span>Igwebuike &mdash; Strength in Unity</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
